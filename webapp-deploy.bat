@@ -7,5 +7,5 @@ SET Webapps_Dir="%CATALLINA_HOME%"\webapps
 call xcopy \\\Divisions\***\****\SCM\***\"%APP_VERSIOn%"\appname\*.war "%Webapps_Dir%" /Y /I /R
 call "%CATALINA_HOME%"\bin\catalina.bat stop
 timeout /t 30
-call '%CATALINA_HOME%'\bin\catalina.bat start
+call "%CATALINA_HOME%"\bin\catalina.bat start
 endlocal.
