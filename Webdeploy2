@@ -17,7 +17,7 @@ call "%CATALINA_HOME%"\bin\catalina.bat stop
 timeout /t 30
 call "%CATALINA_HOME%"\bin\catalina.bat start)
 else(
-FOR /F "tokens=*" %%i IN ('dir %Src% /b /ad-h /t:w /o-d') DO (SET APP_VERSION=%%i)
+FOR /F "tokens=*" %%i IN ('dir %Src% /b /ad-h /t:w /od') DO (SET APP_VERSION=%%i)
 call xcopy "%Src%""%APP_VERSIOn%"\"%APP_NAME%"\*.war "%Webapps_Dir%" /Y /I /R
 call "%CATALINA_HOME%"\bin\catalina.bat stop
 timeout /t 30
