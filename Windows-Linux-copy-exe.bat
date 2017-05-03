@@ -15,18 +15,18 @@ mkdir Putty
 call XCOPY \\projscm\Gallery\Softwares\Putty\* ".\Putty" /Z /Y /E
 If "%APP_VERSION%" NEQ "" (
 set APP_VERSION=%APP_VERSION%
-mkdir %APP_VERSION%\STS
-mkdir %APP_VERSION%\STA
+mkdir %APP_VERSION%\APP1
+mkdir %APP_VERSION%\APP2
 REM call XCOPY \\projscm\Gallery\Softwares\Putty\* ".\Putty" /Z /Y /E
-call XCOPY %Src%\"%APP_VERSION%"\STS\* .\%APP_VERSION%\STS /Z /E /Y
-call XCOPY %Src%\"%APP_VERSION%"\STA\* .\%APP_VERSION%\STA /Z /Y /E
+call XCOPY %Src%\"%APP_VERSION%"\APP1\* .\%APP_VERSION%\APP1 /Z /E /Y
+call XCOPY %Src%\"%APP_VERSION%"\APP2\* .\%APP_VERSION%\APP2 /Z /Y /E
 timeout /t 5 
 goto Deploy )
 else(
 FOR /F "tokens=*" %%i IN ('dir %Src% /b /ad-h /t:w /od') DO ( SET APP_VERSION=%%i  
 mkdir %APP_VERSION%
-call XCOPY %Src%\"%APP_VERSION%"\STS\* .\%APP_VERSION%\STS /Z /E /Y
-call XCOPY %Src%\"%APP_VERSION%"\STA\* .\%APP_VERSION%\STA /Z /Y /E
+call XCOPY %Src%\"%APP_VERSION%"\APP1\* .\%APP_VERSION%\APP1 /Z /E /Y
+call XCOPY %Src%\"%APP_VERSION%"\APP2\* .\%APP_VERSION%\APP2 /Z /Y /E
 echo Version Number: %APP_VERSION%
 timeout /t 5
 goto Deploy
@@ -34,10 +34,10 @@ goto Deploy
 
 :Deploy
 REM XCOPY \\projectscm\Gallery\Softwares\Putty\* ".\Putty" /Z /Y /E
-REM XCOPY %Src%\44\STS\* .\STS /Z /E /Y
-REM XCOPY %Src%\44\STA\* .\STA /Z /Y /E
+REM XCOPY %Src%\44\APP1\* .\APP1 /Z /E /Y
+REM XCOPY %Src%\44\APP2\* .\APP2 /Z /Y /E
 .\Putty\pscp.exe -r -q -pw %Linux_PW% .\%APP_VERSION% %Linux_User%@%Linux_Machine%:%Target_Dir%
-REM .\Putty\pscp.exe -r -q -pw %Linux_PW% .\STA %Linux_User%@%Linux_Machine%:%Target_Dir%
+REM .\Putty\pscp.exe -r -q -pw %Linux_PW% .\APP2 %Linux_User%@%Linux_Machine%:%Target_Dir%
 .\Putty\pscp.exe -r -q -pw %Linux_PW% .\Scripts %Linux_User%@%Linux_Machine%:%Target_Dir%
 
 .\Putty\plink.exe -v -pw %Linux_PW% %Linux_User%@%Linux_Machine% export APP_DIR=%Target_Dir%/%APP_VERSION%; sh %Target_Dir%/Scripts/ST-Deployment.sh
