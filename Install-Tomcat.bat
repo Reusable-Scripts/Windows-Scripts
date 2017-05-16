@@ -26,6 +26,13 @@ bin\startup.bat
 
 goto comments
 1. To update tomcat connector port
+<Server port="${port.shutdown}" shutdown="SHUTDOWN">
+...
+  <Connector port="${port.http}" protocol="HTTP/1.1"/>
+...
+</Server>
+
+
 Here's how you can start in Linux (assuming your current directory is CATALINA_HOME):
 JAVA_OPTS="-Dport.shutdown=8005 -Dport.http=8080" bin/startup.sh
 
