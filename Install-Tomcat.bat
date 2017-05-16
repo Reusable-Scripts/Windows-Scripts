@@ -9,3 +9,14 @@ call .\Packages\7za.exe x .\Packages\apache-tomcat-9.0.0.M20.zip -o%InstallDir% 
 set CATALINA_HOME="%InstallDir%\apache-tomcat-9.0.0.M20"
 setx CATALINA_HOME="%InstallDir%\apache-tomcat-9.0.0.M20"
 setx path "%path%;%CATALINA_HOME%\bin"
+echo "end of installation"
+
+goto comments
+1. To update tomcat connector port
+Here's how you can start in Linux (assuming your current directory is CATALINA_HOME):
+JAVA_OPTS="-Dport.shutdown=8005 -Dport.http=8080" bin/startup.sh
+
+In windows it should be smth like following:
+set "JAVA_OPTS=-Dport.shutdown=8005 -Dport.http=8080"
+bin\startup.bat
+:comments
