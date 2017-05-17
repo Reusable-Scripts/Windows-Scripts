@@ -24,6 +24,19 @@ move New.xml server.xml
 cd /d %CATALINA_HOME%
 bin\startup.bat
 
+tasklist /FI "IMAGENAME eq tomcat.exe" | find /C /I ".exe" > NUL
+if %errorlevel%==0 goto :running
+
+echo tomcat is not running
+goto :eof
+
+:running
+echo tomcat is running
+
+:eof
+
+
+
 goto comments
 1. To update tomcat connector port
 <Server port="${port.shutdown}" shutdown="SHUTDOWN">
