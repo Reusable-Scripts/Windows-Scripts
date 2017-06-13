@@ -15,3 +15,4 @@ sc qc Tomcat8|findstr BINARY_PATH_NAME
 
 FOR /f "delims=/" %%a IN ('reg query "HKLM\System\CurrentControlSet\Services\Tomcat8" /v "ImagePath"') DO ( FOR /f "tokens=1,2,*delims= " %%b IN ("%%a") DO IF "%%b"=="ImagePath" ( FOR %%m IN ("%%~dpd.") DO ECHO %%~dpm ) )
 
+FOR /f "delims=/" %%a IN ('reg query "HKLM\System\CurrentControlSet\Services\Tomcat8" /v "ImagePath"') DO ( FOR /f "tokens=1,2,*delims= " %%b IN ("%%a") DO IF "%%b"=="ImagePath" ( FOR %%m IN ("%%~dpd.") DO ECHO %%~dpm ))
