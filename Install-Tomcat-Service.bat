@@ -14,7 +14,7 @@ IF NOT EXIST %CATALINA_HOME%\bin goto :install-tomcat
 goto :start-tomcat
 
 :install-tomcat
-set /p InstallDir="Enter Tomcat Installation Directory: "
+echo installing tomcat under %1
 call .\ThirdParty\7za.exe x .\ThirdParty\apache-tomcat-8.5.15-windows-x64.zip -o%InstallDir%\ * -r -y
 set CATALINA_HOME=%InstallDir%\apache-tomcat-8.5.15
 setx -m CATALINA_HOME %InstallDir%\apache-tomcat-8.5.15
