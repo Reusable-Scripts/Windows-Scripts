@@ -28,9 +28,7 @@ IF NOT EXIST "%CATALINA_HOME%\Instances\%APP_NAME%-tomcat\%APP_VERSION%\webapps"
 REM SET Src=%Src:"=%
 REM chdir /d %Src%
 echo y|COPY "%temp%\%APP_VERSION%\Media\%APP_NAME%\%APP_NAME%"*.war "%CATALINA_HOME%\Instances\%APP_NAME%-tomcat\%APP_VERSION%\webapps\"
-IF NOT EXIST "%CATALINA_HOME%\Instances\%APP_NAME%-tomcat\%APP_VERSION%\webapps\sea" ( mkdir "%CATALINA_HOME%\Instances\%APP_NAME%-tomcat\%APP_VERSION%\webapps\sea"
-)
-XCOPY "%temp%\%APP_VERSION%\Media\sea\target" "%CATALINA_HOME%\Instances\%APP_NAME%-tomcat\%APP_VERSION%\webapps\sea\" /Y /I /R /E
+
 IF NOT EXIST "%CATALINA_HOME%\Instances\%APP_NAME%-tomcat\%APP_VERSION%\work" ( mkdir "%CATALINA_HOME%\Instances\%APP_NAME%-tomcat\%APP_VERSION%\work"
 )
 IF NOT EXIST "%CATALINA_HOME%\Instances\%APP_NAME%-tomcat\%APP_VERSION%\logs" ( mkdir "%CATALINA_HOME%\Instances\%APP_NAME%-tomcat\%APP_VERSION%\logs" 
