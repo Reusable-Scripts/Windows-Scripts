@@ -1,0 +1,15 @@
+@echo off
+setlocal
+:: print first line of a file
+set /p line= < %WORKSPACE%\logs\tests.log 
+echo %line%
+
+:: Get the number of lines in the file
+set LINES=0
+for /f "delims==" %%I in (%WORKSPACE%\logs\tests.log) do (
+    set /a LINES=LINES+1
+)
+
+:: Print the last n lines(n=1 here) 
+set /a LINES=LINES-1
+more +%LINES%
